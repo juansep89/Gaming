@@ -1,0 +1,123 @@
+/* ===== 1. Colores guardados en "variables" para reutilizarlos ===== */
+:root {
+  --fondo: #0f1117;
+  --tarjeta: #1a1d27;
+  --texto: #f2f3f7;
+  --texto-suave: #9aa0b4;
+  --borde: #2a2e3d;
+
+  /* Un color por marca */
+  --nintendo: #e4000f;
+  --sony: #2e6bff;
+  --microsoft: #16a34a;
+  --sega: #f59e0b;
+}
+
+/* ===== 2. Reglas generales ===== */
+* {
+  box-sizing: border-box; /* Hace que los tamaños sean más fáciles de calcular */
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  /* Usa la letra del sistema: en iPhone se verá la fuente de Apple */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  /* Espacio a los lados (16px) + respeta la "muesca" del iPhone */
+  padding: 0 max(16px, env(safe-area-inset-right)) 0 max(16px, env(safe-area-inset-left));
+}
+
+/* ===== 3. Encabezado ===== */
+.encabezado {
+  text-align: center;
+  padding: max(32px, env(safe-area-inset-top)) 0 24px;
+}
+
+.encabezado h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  letter-spacing: 0.05em;
+}
+
+.subtitulo {
+  margin: 4px 0 0;
+  color: var(--texto-suave);
+}
+
+.contador {
+  display: inline-block;
+  margin: 16px 0 0;
+  padding: 4px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  color: var(--texto-suave);
+}
+
+/* ===== 4. La vitrina (la cuadrícula de tarjetas) ===== */
+.vitrina {
+  list-style: none; /* Quita los números automáticos de la lista */
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: 1fr; /* En el celular: una sola columna */
+  gap: 12px;
+}
+
+/* ===== 5. Cada tarjeta ===== */
+.consola {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-left: 6px solid var(--color-marca, var(--borde));
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.consola .anio {
+  font-size: 1.5rem;
+  font-weight: 700;
+  min-width: 3.5ch; /* Mantiene todos los años alineados */
+  font-variant-numeric: tabular-nums;
+}
+
+.consola .nombre {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.consola .marca {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--texto-suave);
+}
+
+/* Cada marca cambia el color del borde izquierdo */
+.consola.nintendo  { --color-marca: var(--nintendo); }
+.consola.sony      { --color-marca: var(--sony); }
+.consola.microsoft { --color-marca: var(--microsoft); }
+.consola.sega      { --color-marca: var(--sega); }
+
+/* ===== 6. Pie de página ===== */
+.pie {
+  text-align: center;
+  color: var(--texto-suave);
+  font-size: 0.875rem;
+  padding: 32px 0 max(32px, env(safe-area-inset-bottom));
+}
+
+/* ===== 7. Pantallas más grandes (tablet y computador) ===== */
+/* "Si la pantalla mide 600px o más de ancho, usa 2 columnas" */
+@media (min-width: 600px) {
+  .vitrina { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* "Si mide 900px o más, usa 3 columnas" */
+@media (min-width: 900px) {
+  .vitrina { grid-template-columns: repeat(3, 1fr); }
+}
