@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Le dice al navegador que use letras como á, é, ñ sin problemas -->
+  <meta charset="UTF-8">
+  <!-- Clave para iPhone: hace que la página use el ancho real de la pantalla -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Gaming</title>
+  <!-- Conecta el archivo de estilos (colores, tamaños, diseño) -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="encabezado">
+    <h1>Gaming</h1>
+    <p class="subtitulo">Mi vitrina de consolas, ordenadas por año de compra</p>
+    <p class="contador" id="contador"></p>
+  </header>
+
+  <main>
+    <!-- Esta lista empieza vacía: script.js la llena con una tarjeta por consola -->
+    <ol class="vitrina" id="vitrina"></ol>
+  </main>
+
+  <footer class="pie">
+    <p>Hecho a mano con HTML, CSS y JavaScript</p>
+  </footer>
+
+  <!-- Conecta el archivo de JavaScript. Va al final para que la página ya exista cuando se ejecute -->
+  <script src="script.js"></script>
+</body>
+</html>
